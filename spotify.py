@@ -1,5 +1,5 @@
 import requests 
-from secrets import *
+from api_key import *
 import base64, json
 
 authUrl = "https://accounts.spotify.com/api/token"
@@ -7,6 +7,8 @@ authUrl = "https://accounts.spotify.com/api/token"
 authHeader = {}
 
 authData = {}
+
+songs = []
 
 def getAccessToken(clientID, clientSecret):
 
@@ -50,6 +52,7 @@ sol = getlatest(token)
 
 for i in range(0,10):
     print(sol['albums']['items'][i]['name'])
+    songs.append(sol['albums']['items'][i]['name'])
 
 # print(sol['albums']['items'][10]['release_date'])
 # print(json.dumps(sol, indent = 4))

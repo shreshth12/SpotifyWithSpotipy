@@ -11,9 +11,12 @@
     {% else %}
         <title> No Title </title>
     {% endif %} 
-    
+
 </head>
 <body>
     <h1>Shreshth's favourite shows!</h1>
+    {% for song in songs %}
+    <p>{{song}}</p>
+    {% endfor %}
 </body>
 </html>
