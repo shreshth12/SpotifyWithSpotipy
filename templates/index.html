@@ -14,9 +14,31 @@
 
 </head>
 <body>
-    <h1>Shreshth's favourite shows!</h1>
-    {% for song in songs %}
-    <p>{{song}}</p>
+    
+    {% for track in songs_by_weekend %}
+    <div class="boxed">
+        <h1> {{track}} </h1>
+
+        <h4>By The Weekend</h2>
+
+        <img class = "image_artist" src="{{ weekend_image }}" alt="">
+
+        <br>
+
+        <img class = "image" src="{{ songs_by_weekend[track]['link_to_displayPhoto'] }}" alt="">
+
+        <br>
+
+        <audio controls>
+            <source src="{{ songs_by_weekend[track]['preview'] }}" type="audio/mpeg"> 
+        </audio>
+    
+        <br>
+
+        <a class = "links" href="{{ songs_by_weekend[track]['link_to_song'] }}" target=”_blank”>Want to hear the full song?</a>
+
+    </div>
     {% endfor %}
+   
 </body>
 </html>
