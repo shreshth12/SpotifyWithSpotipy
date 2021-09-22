@@ -1,5 +1,5 @@
 from api_key import *
-import spotipy, json
+import spotipy, json, sys
 from spotipy.oauth2 import SpotifyClientCredentials
 
 index = 0
@@ -12,13 +12,24 @@ spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(cl
 results = spotify.artist_top_tracks(weekend_uri)
 
 for track in results['tracks'][:10]:
-    songs_by_weekend[track['name']] = results['tracks'][index]['external_urls']['spotify']
+    Values = {}
+    Values['link_to_song'] = results['tracks'][index]['external_urls']['spotify']
+    Values['link_to_displayPhoto'] = results['tracks'][index]['album']['images'][1]['url']
+    songs_by_weekend[track['name']] = Values
     # print()
     # print('track    : ' + track['name'])
     # print()
     index += 1
 
+
 for track in songs_by_weekend:
-    print(f'{track} : {songs_by_weekend[track]}')
+    print(track)
+    print(songs_by_weekend[track]['link_to_song'])
+    print(songs_by_weekend[track]['link_to_displayPhoto'])
     print()
+
+
+    
+#-----------------------------------
+
 #print(json.dumps(results, indent = 2))
