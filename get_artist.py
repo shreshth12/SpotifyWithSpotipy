@@ -8,7 +8,7 @@ weekend_uri = 'https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ?si=nDkuIe2
 justin_uri = 'https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s?si=rJS9ztGXSTSpdrVpBL08mg&dl_branch=1'
 
 songs_by_weekend = get_artist_data(weekend_uri)
-print(songs_by_weekend)
+print_songs_data(songs_by_weekend)
 #-----------------------------------
 
 #print(json.dumps(results, indent = 2))
