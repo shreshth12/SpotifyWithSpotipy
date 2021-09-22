@@ -15,27 +15,35 @@
 </head>
 <body>
     
-    {% for track in songs_by_weekend %}
+    {% for track in artists[random_number][0] %}
     <div class="boxed">
         <h1> {{track}} </h1>
 
-        <h4>By The Weekend</h2>
+        <h4>
+            {% if random_number == 0 %}
+                By Justin Beiber
+            {% elif random_number == 1 %}
+                By The Weekend
+            {% else %}
+                By Taylor Swift
+            {% endif %}
+        </h2>
 
-        <img class = "image_artist" src="{{ weekend_image }}" alt="">
+        <img class = "image_artist" src="{{ artists[random_number][1] }}" alt="">
 
         <br>
 
-        <img class = "image" src="{{ songs_by_weekend[track]['link_to_displayPhoto'] }}" alt="">
+        <img class = "image" src="{{ artists[random_number][0][track]['link_to_displayPhoto'] }}" alt="">
 
         <br>
 
         <audio controls>
-            <source src="{{ songs_by_weekend[track]['preview'] }}" type="audio/mpeg"> 
+            <source src="{{ artists[random_number][0][track]['preview'] }}" type="audio/mpeg"> 
         </audio>
     
         <br>
 
-        <a class = "links" href="{{ songs_by_weekend[track]['link_to_song'] }}" target=”_blank”>Want to hear the full song?</a>
+        <a class = "links" href="{{ artists[random_number][0][track]['link_to_song'] }}" target=”_blank”>Want to hear the full song?</a>
 
     </div>
     {% endfor %}

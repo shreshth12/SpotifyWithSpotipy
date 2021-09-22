@@ -3,11 +3,6 @@ import spotipy, json, sys
 from spotipy.oauth2 import SpotifyClientCredentials
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = f'{clientID}', client_secret = f'{clientSecret}'))
 
-# weekend_uri = 'https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ?si=nDkuIe2zS2KGYbAVTLvHSQ&dl_branch=1'
-
-# justin_uri = 'https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s?si=rJS9ztGXSTSpdrVpBL08mg&dl_branch=1'
-
-
 #Use this function to get an artist's picture
 def get_artist_picture(Aname):
     if len(sys.argv) > 1:
@@ -22,7 +17,6 @@ def get_artist_picture(Aname):
         return artist['images'][0]['url']
 
 #Use this function to get artist's top ten songs, cover pictures, song url, preview url.
-
 def get_artist_data(artist_uri):
     index = 0
     artist_results = {}
