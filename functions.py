@@ -1,7 +1,18 @@
+from lyricsgenius.api.public_methods import artist
 from api_key import *
 import spotipy, json, sys
 from spotipy.oauth2 import SpotifyClientCredentials
+import lyricsgenius
+from lyricsgenius import Genius
+
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = f'{clientID}', client_secret = f'{clientSecret}'))
+
+
+genius = Genius(GENIUS_ACCESS_TOKEN)
+songs = genius.search_songs("You Need To Calm Down",per_page=1)
+x = json.dumps(songs, indent = 2)
+print(songs['hits'][0]['result']['url'])
+
 
 #Use this function to get an artist's picture
 def get_artist_picture(Aname):
@@ -43,7 +54,6 @@ def print_songs_data(artist_data):
         print(f'DP: {DP}')
         print(f'TrackPreview: {TrackPreview}')
         print()
-
 
 # print(get_artist_DP('Justin Bieber'))
 # print_songs_data(get_artist_data(justin_uri))
