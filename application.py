@@ -11,4 +11,4 @@ def hello_world():
     return render_template('index.html', artists = artists, random_number = random_number)
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = True, host="0.0.0.0")
