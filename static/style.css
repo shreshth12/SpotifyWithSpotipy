@@ -37,3 +37,10 @@ body {
   width: 50px;
   border-radius: 30px;
 }
+
+.lyricsLinks{
+  padding: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: wheat;
+  text-align: center;
+}

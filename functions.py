@@ -8,12 +8,6 @@ from lyricsgenius import Genius
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = f'{clientID}', client_secret = f'{clientSecret}'))
 genius = Genius(GENIUS_ACCESS_TOKEN)
 
-# formatted_name = re.sub(r" ?\([^)]+\)", "", item)
-# songs = genius.search_songs("Peaches",per_page=1)
-# print(json.dumps(songs, indent = 2))
-#print(songs['hits'][0]['result']['url'])
-
-
 #Use this function to get an artist's picture
 def get_artist_picture(Aname):
     if len(sys.argv) > 1:
@@ -58,12 +52,8 @@ def print_songs_data(artist_data):
         print(f'LinkToSong: {linkToSong}')
         print(f'DP: {DP}')
         print(f'TrackPreview: {TrackPreview}')
-        print(f'trackURL: {trackURL}')
+        print(f'lyricsURL: {trackURL}')
         print()
 
 # print(get_artist_DP('Justin Bieber'))
-weekend_uri = 'https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ?si=nDkuIe2zS2KGYbAVTLvHSQ&dl_branch=1'
-taylor_uri = 'https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02?si=U1pUI152TlCmbrYtz-n6tg&dl_branch=1'
-print_songs_data(get_artist_data(weekend_uri))
-print_songs_data(get_artist_data(taylor_uri))
 #get_artist_data(justin_uri)
