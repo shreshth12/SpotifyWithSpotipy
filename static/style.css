@@ -3,8 +3,24 @@ body {
     font-family: Arial;
   }
 
+.center{
+  margin: 100px;
+}
+
+.close{
+  background-image: url('https://www.wallpapertip.com/wmimgs/15-151518_rainbow-horizontal-lines.jpg');
+  background-repeat: no-repeat;
+  border: 5px solid rgb(112, 30, 30);
+  background-color: rgb(31, 153, 47);
+  text-align: center;
+  padding: 30px;
+  margin: 50px;
+  color: aliceblue;
+}
+
 .boxed {
-  height: 600px;
+  font-family: cursive;
+  height: 700px;
   width: 300px;
   border: 5px solid rgb(0, 0, 0);
   padding: 30px;
