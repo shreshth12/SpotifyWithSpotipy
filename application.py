@@ -10,5 +10,9 @@ def hello_world():
     random_number = random.randint(0,2)
     return render_template('index.html', artists = artists, random_number = random_number)
 
+@app.route("/login")
+def login_page():
+    return render_template('login.html')
+
 if __name__ == '__main__':
     app.run(debug = True, host="0.0.0.0")

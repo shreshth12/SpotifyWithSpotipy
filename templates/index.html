@@ -14,7 +14,14 @@
 
 </head>
 <body>
-    <h1 class = "close"> SPOTIFY WEB APP </h1>
+    
+    <div class="topnav">
+        <a href="#home">Login</a>
+        <a href="#news">Sign Up!</a>
+    </div>
+    
+
+    {% block tracks %}
     <div class="center">
         
         {% for track in artists[random_number][0] %}
@@ -54,5 +61,6 @@
         </div>
         {% endfor %}
     </div>
+    {% endblock %}
 </body>
 </html>
