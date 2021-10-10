@@ -16,14 +16,25 @@
 <body>
     
     <div class="topnav">
-        <a href="#home">Login</a>
-        <a href="#news">Sign Up!</a>
+        <a href="{{ url_for('login_page') }}">Login</a>
+        <a href="{{ url_for('register_page') }}">Sign Up!</a>
     </div>
     
-
-    {% block tracks %}
+    <div>
+        {% with messages = get_flashed_messages(with_categories = true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                 {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+    
+    {% block content %}  
     <div class="center">
-        
+    
         {% for track in artists[random_number][0] %}
         <div class="boxed">
             <h1> {{track}} </h1>
@@ -60,6 +71,7 @@
 
         </div>
         {% endfor %}
+    
     </div>
     {% endblock %}
 </body>
