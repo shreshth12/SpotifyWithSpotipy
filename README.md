@@ -5,7 +5,7 @@ Libraries used : spotipy, json, sys, re, lyricsgenius, render_template, url_for,
 Frameworks used : Flask
 Programming languages used : Python, HTML, CSS 
 
-Heroku URL : 
+Heroku URL : https://radiant-harbor-14713.herokuapp.com
 
 # A LITTLE BIT ABOUT THE APP :- 
 This is a web application built using Flask framework. It uses Spotify's Web API to fetch top tracks for 3 different artists and their spotify links displayed and a 30-second clip to hear the music. You can also check out the lyrics of the music, which is fetched using Genius API. 
