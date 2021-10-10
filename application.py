@@ -4,7 +4,7 @@ import random
 import os
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/")#This is for testing only
 def hello_world():
     #artists = [Justin, Weekend, Taylor]
     random_number = random.randint(0,2)
