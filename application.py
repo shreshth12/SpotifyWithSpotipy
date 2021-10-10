@@ -15,15 +15,21 @@ def hello_world():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login_page():
-    # form = loginForm()
-    return render_template('login.html')
+    form = loginForm()
+    if form.validate_on_submit():
+        if(form.username.data == 'skaushik2' and form.password.data == 'hello123'):
+            flash('Welcome back!', 'success')
+            return redirect(url_for('hello_world'))
+        else:
+            flash('Incorrect username or password', 'error')
+    return render_template('login.html', form = form)
 
 @app.route("/register", methods=['GET', 'POST'])
 def register_page():
     form = registrationForm()
 
     if form.validate_on_submit():
-        flash('Your account is now created!', 'success')
+        flash('Your account is now created and you can log in below', 'success')
         return redirect(url_for('login_page'))
     return render_template('register.html', form = form)
 
