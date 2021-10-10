@@ -7,7 +7,7 @@
         {{ form.username.label }}
             {% if form.username.errors %}
                 {{ form.username }}
-                    <div class="invalid-feedback">
+                    <div>
                         {% for error in form.username.errors %}
                             <span> {{ error }}</span>
                         {% endfor%}
@@ -21,7 +21,7 @@
         {{ form.password.label }}
             {% if form.password.errors %}
                 {{ form.password }}
-                    <div class="invalid-feedback">
+                    <div>
                         {% for error in form.password.errors %}
                             <span> {{ error }}</span>
                         {% endfor%}
@@ -34,7 +34,7 @@
         {{ form.repeat_password.label }}
             {% if form.repeat_password.errors %}
                 {{ form.repeat_password }}
-                    <div class="invalid-feedback">
+                    <div">
                         {% for error in form.repeat_password.errors %}
                             <span> {{ error }}</span>
                         {% endfor%}
