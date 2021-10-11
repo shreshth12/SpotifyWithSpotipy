@@ -16,8 +16,13 @@
 <body>
     
     <div class="topnav">
-        <a href="{{ url_for('login_page') }}">Login</a>
-        <a href="{{ url_for('register_page') }}">Sign Up!</a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="#">{{ current_user.username }}</a>
+        {% else %}
+            <a href="{{ url_for('login_page') }}">Login</a>
+            <a href="{{ url_for('register_page') }}">Sign Up!</a>
+        {% endif %}
     </div>
     
     <div>
