@@ -9,6 +9,14 @@ justin_uri = 'https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s?si=rJS9ztGX
 
 taylor_uri = 'https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02?si=U1pUI152TlCmbrYtz-n6tg&dl_branch=1'
 
+def check_artist_url(url):
+    try:
+        get_artist_data(url)
+        return True
+    except:
+        return False
+
+
 songs_by_weekend = get_artist_data(weekend_uri)
 weekend_image = get_artist_picture('The Weekend')
 

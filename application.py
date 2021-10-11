@@ -44,6 +44,11 @@ class uriForm(FlaskForm):
     uri = StringField('Enter artist URI', validators=[DataRequired()])
     submit = SubmitField('Save')
 
+    def validate_uri(self, uri):
+        post = Post.query.filter_by(artist_uri=uri.data).first()
+        if post:
+            raise ValidationError('You have already added this artist')
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -68,6 +73,14 @@ def hello_world():
     #artists = [Justin, Weekend, Taylor]
     form = uriForm()
     if form.validate_on_submit():
+        if(check_artist_url(form.uri.data) == True):
+            post = Post(artist_uri = form.uri.data, author = current_user)
+            db.session.add(post)
+            db.session.commit()
+            flash('Successfully added artistID', 'success')
+            return redirect(url_for('hello_world'))
+        else:
+            flash('Please enter a valid artistID', 'error')
         random_number = random.randint(0,2)
         return render_template('index.html', artists = artists, random_number = random_number, title = 'Homepage', form = form)
     random_number = random.randint(0,2)
