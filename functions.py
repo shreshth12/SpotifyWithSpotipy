@@ -55,5 +55,7 @@ def print_songs_data(artist_data):
         print(f'lyricsURL: {trackURL}')
         print()
 
+def get_artist_name(artist_uri):
+    return spotify.artist(artist_uri)['name']
 # print(get_artist_DP('Justin Bieber'))
 #get_artist_data(justin_uri)
