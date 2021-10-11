@@ -40,6 +40,10 @@ class loginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log in')
 
+class uriForm(FlaskForm):
+    uri = StringField('Enter artist URI', validators=[DataRequired()])
+    submit = SubmitField('Save')
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -62,8 +66,12 @@ class Post(db.Model):
 @login_required
 def hello_world():
     #artists = [Justin, Weekend, Taylor]
+    form = uriForm()
+    if form.validate_on_submit():
+        random_number = random.randint(0,2)
+        return render_template('index.html', artists = artists, random_number = random_number, title = 'Homepage', form = form)
     random_number = random.randint(0,2)
-    return render_template('index.html', artists = artists, random_number = random_number, title = 'Homepage')
+    return render_template('index.html', artists = artists, random_number = random_number, title = 'Homepage', form = form)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login_page():
