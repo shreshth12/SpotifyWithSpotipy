@@ -95,10 +95,7 @@ def hello_world():
             data_of_that_artist = [songs_by_that_artist, image_of_that_artist, name_of_that_artist]
             artists.append(data_of_that_artist)
 
-    # songs_by_Taylor = get_artist_data(taylor_uri)
-    # taylor_image = get_artist_picture('Taylor Swift')
-    # Taylor = [songs_by_Taylor, taylor_image]
-    # artists = [Justin, Weekend, Taylor]
+
 
     if len(artists_db_ones) != 0:
         random_number = random.randint(0,len(artists_db_ones)-1)
