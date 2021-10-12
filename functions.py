@@ -1,6 +1,5 @@
-from lyricsgenius.api.public_methods import artist
 from api_key import *
-import spotipy, json, sys
+import spotipy, sys
 from spotipy.oauth2 import SpotifyClientCredentials
 import re
 from lyricsgenius import Genius
@@ -57,5 +56,11 @@ def print_songs_data(artist_data):
 
 def get_artist_name(artist_uri):
     return spotify.artist(artist_uri)['name']
-# print(get_artist_DP('Justin Bieber'))
-#get_artist_data(justin_uri)
+
+def check_artist_url(url):
+    try:
+        get_artist_data(url)
+        return True
+    except:
+        return False
+
