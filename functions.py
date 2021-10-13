@@ -1,9 +1,15 @@
-import os
 import spotipy, sys
 from spotipy.oauth2 import SpotifyClientCredentials
 import re
 from lyricsgenius import Genius
-from api_key import *
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+clientID = os.getenv('clientID')
+clientSecret = os.getenv('clientSecret')
+GENIUS_ACCESS_TOKEN = os.getenv('GENIUS_ACCESS_TOKEN')
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = f'{clientID}', client_secret = f'{clientSecret}'))
 genius = Genius(GENIUS_ACCESS_TOKEN)
