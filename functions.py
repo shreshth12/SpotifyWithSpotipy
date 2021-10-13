@@ -1,9 +1,15 @@
-from lyricsgenius.api.public_methods import artist
-from api_key import *
-import spotipy, json, sys
+import spotipy, sys
 from spotipy.oauth2 import SpotifyClientCredentials
 import re
 from lyricsgenius import Genius
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+clientID = os.getenv('clientID')
+clientSecret = os.getenv('clientSecret')
+GENIUS_ACCESS_TOKEN = os.getenv('GENIUS_ACCESS_TOKEN')
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = f'{clientID}', client_secret = f'{clientSecret}'))
 genius = Genius(GENIUS_ACCESS_TOKEN)
@@ -55,5 +61,13 @@ def print_songs_data(artist_data):
         print(f'lyricsURL: {trackURL}')
         print()
 
-# print(get_artist_DP('Justin Bieber'))
-#get_artist_data(justin_uri)
+def get_artist_name(artist_uri):
+    return spotify.artist(artist_uri)['name']
+
+def check_artist_url(url):
+    try:
+        get_artist_data(url)
+        return True
+    except:
+        return False
+
