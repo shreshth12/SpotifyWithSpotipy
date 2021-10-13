@@ -8,15 +8,15 @@ import random
 
 @app.route("/", methods=['GET', 'POST'])
 @login_required
-def hello_world():
+def homePage():
     form = uriForm()
     if form.validate_on_submit():
         if(check_artist_url(form.uri.data) == True):
             post = Post(artist_uri = form.uri.data, author = current_user)
             db.session.add(post)
             db.session.commit()
-            flash('Successfully added artistID', 'success')
-            return redirect(url_for('hello_world'))
+            flash('Successfully added artist', 'success')
+            return redirect(url_for('homePage'))
         else:
             flash('Please enter a valid artistID', 'error')
 
@@ -42,14 +42,14 @@ def hello_world():
 @app.route("/login", methods=['GET', 'POST'])
 def login_page():
     if current_user.is_authenticated:
-        return redirect(url_for('hello_world'))
+        return redirect(url_for('homePage'))
     form = loginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username = form.username.data).first()
         if(user and user.password == form.password.data):
             login_user(user)
             next_page = request.args.get('next')
-            return redirect(url_for('hello_world'))
+            return redirect(url_for('homePage'))
         else:
             flash('Incorrect username or password', 'error')
     return render_template('login.html', form = form, title = 'login page')
@@ -57,7 +57,7 @@ def login_page():
 @app.route("/register", methods=['GET', 'POST'])
 def register_page():
     if current_user.is_authenticated:
-        return redirect(url_for('hello_world'))
+        return redirect(url_for('homePage'))
     form = registrationForm()
     if form.validate_on_submit():
         user = User(username = form.username.data, password = form.password.data)

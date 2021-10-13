@@ -1,53 +1,63 @@
 {% extends "index.html" %}
 {% block content %}
+
+<div class="page">
 <form method="POST" action="">
     {{ form.hidden_tag() }}
-    <fieldset>
+    <fieldset class="field">
     <div>
         {{ form.username.label }}
             {% if form.username.errors %}
-                {{ form.username }}
+                {{ form.username(class="border") }}
                     <div>
-                        {% for error in form.username.errors %}
-                            <span> {{ error }}</span>
-                        {% endfor%}
+                        <div class="error">
+                            {% for error in form.username.errors %}
+                                <span> {{ error }}</span>
+                            {% endfor%}
+                        </div>
                     </div>
             {% else %}
-                {{ form.username }}
+                {{ form.username(class="border") }}
                 {% endif %}
     </div>
 
     <div>
         {{ form.password.label }}
             {% if form.password.errors %}
-                {{ form.password }}
+                {{ form.password(class="border") }}
                     <div>
-                        {% for error in form.password.errors %}
-                            <span> {{ error }}</span>
-                        {% endfor%}
+                        <div class="error">
+                            {% for error in form.password.errors %}
+                                <span class="error"> {{ error }}</span>
+                            {% endfor%}
+                        </div>
                     </div>
             {% else %}
-                {{ form.password }}
+                {{ form.password(class="border") }}
                 {% endif %}
     </div>
     <div>
         {{ form.repeat_password.label }}
             {% if form.repeat_password.errors %}
-                {{ form.repeat_password }}
+                {{ form.repeat_password(class="border") }}
                     <div">
-                        {% for error in form.repeat_password.errors %}
-                            <span> {{ error }}</span>
-                        {% endfor%}
+                        <div class="error">
+                            {% for error in form.repeat_password.errors %}
+                                <span class="error"> {{ error }}</span>
+                            {% endfor %}
+                        </div>
                     </div>
             {% else %}
-                {{ form.repeat_password }}
+                {{ form.repeat_password(class="border") }}
                 {% endif %}
     </div>
     </fieldset>
-    <div>
-        {{ form.submit }}
+    <div class="field">
+        {{ form.submit(class = "button") }}
     </div>
 </form>
+</div> 
+
 {% endblock %}
     
    

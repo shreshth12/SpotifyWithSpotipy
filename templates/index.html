@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     {% if title %}
@@ -16,9 +18,10 @@
 <body>
     
     <div class="topnav">
+        <a style="color: aqua; text-align: left;" href="#">SPOTIFYwithSPOTIPY</a>
         {% if current_user.is_authenticated %}
             <a href="{{ url_for('logout') }}">Logout</a>
-            <a href="#">{{ current_user.username }}</a>
+            <a href="{{ url_for('homePage') }}">{{ current_user.username }}</a>
         {% else %}
             <a href="{{ url_for('login_page') }}">Login</a>
             <a href="{{ url_for('register_page') }}">Sign Up!</a>
@@ -29,7 +32,7 @@
         {% with messages = get_flashed_messages(with_categories = true) %}
           {% if messages %}
             {% for category, message in messages %}
-              <div class="alert alert-{{ category }}">
+              <div class="{{ category }}">
                  {{ message }}
               </div>
             {% endfor %}
@@ -39,15 +42,14 @@
     
     {% block content %}
 
-    <div class="center">
+    <div class="uri">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset>
             <div>
                 {{ form.uri.label }}
                     {% if form.uri.errors %}
                         {{ form.uri }}
-                            <div>
+                            <div class="error">
                                 {% for error in form.uri.errors %}
                                     <span> {{ error }}</span>
                                 {% endfor%}
@@ -56,12 +58,11 @@
                         {{ form.uri }}
                         {% endif %}
             </div>
-            </fieldset>
             <div>
-                {{ form.submit }}
+                {{ form.submit(class = "button") }}
             </div>
     </div>
-    <h1>{{ length_of_db_values }}</h1>
+
     <div class="center">
         {% if length_of_db_values != 0 %}
         {% for track in artists[random_number][0] %}
@@ -95,7 +96,7 @@
         </div>
         {% endfor %}
         {% else %}
-            Looks like you do not have any artist saved!
+            <h1 style="color: darkblue; text-align: center;">Looks like you do not have any artist saved, go ahead an add an artist url above 😀</h1>
         {% endif %}
     </div>
     {% endblock %}

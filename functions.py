@@ -3,9 +3,10 @@ import spotipy, sys
 from spotipy.oauth2 import SpotifyClientCredentials
 import re
 from lyricsgenius import Genius
+from api_key import *
 
-spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = f'{os.getenv("clientID")}', client_secret = f'{os.getenv("clientSecret")}'))
-genius = Genius(os.getenv("GENIUS_ACCESS_TOKEN"))
+spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = f'{clientID}', client_secret = f'{clientSecret}'))
+genius = Genius(GENIUS_ACCESS_TOKEN)
 
 #Use this function to get an artist's picture
 def get_artist_picture(Aname):

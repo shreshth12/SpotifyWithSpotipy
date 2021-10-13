@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, EqualTo, Length, ValidationError
 from models import User, Post
+from flask_login import current_user
 
 class registrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min = 2, max = 20)])
@@ -21,10 +22,11 @@ class loginForm(FlaskForm):
     submit = SubmitField('Log in')
 
 class uriForm(FlaskForm):
-    uri = StringField('Enter artist URI', validators=[DataRequired()])
+    uri = StringField('Want to add an artist?', validators=[DataRequired()])
     submit = SubmitField('Save')
 
     def validate_uri(self, uri):
-        post = Post.query.filter_by(artist_uri=uri.data).first()
+
+        post = Post.query.filter_by(author=current_user, artist_uri=uri.data).first()
         if post:
             raise ValidationError('You have already added this artist')
